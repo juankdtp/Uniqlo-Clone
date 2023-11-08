@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Jaket Parka Seamless Down",
+    "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449725/item/idgoods_69_449725.jpg?width=750",
+    "description": "Jaket Pria dengan desain tudung yang dapat memberi perlindungan lebih terhadap udara dingin sangat cocok untuk digunakan traveling lokasi yang dingin.",
+    "price": 299000,
+    "categoryId": 2,
+    "authorId": 1
+  },
+  {
+    "name": "Rompi Panjang Ultra Light Down",
+    "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/460913/item/idgoods_59_460913.jpg?width=750",
+    "description": "Rompi wanita yang stylish dan cukup hangat",
+    "price": 149000,
+    "categoryId": 1,
+    "authorId": 2
+  },
+  {
+    "name": "GIRLS T-Shirt Katun Tanpa Lengan",
+    "mainImg": "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/454276/item/idgoods_69_454276.jpg?width=750",
+    "description": "Baju T-Shirt anak terbuat dari katun yang mudah menyerap keringat",
+    "price": 99000,
+    "categoryId": 3,
+    "authorId": 1
+  }
+]
