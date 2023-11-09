@@ -13,9 +13,6 @@ class Controller {
       const result = await Product.findAll({
         include: [
           {
-            model: User,
-          },
-          {
             model: Category,
           },
         ],
@@ -26,6 +23,7 @@ class Controller {
         data: result,
       });
     } catch (err) {
+      console.log(err);
       next(err);
     }
   }
@@ -161,7 +159,7 @@ class Controller {
         message: `product with id ${id} has been deleted`,
       });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       next(err);
     }
   }
@@ -179,6 +177,7 @@ class Controller {
       const updateProduct = await Product.update(
         {
           name,
+          slug: slugify(name),
           description,
           price,
           mainImg,
@@ -196,6 +195,7 @@ class Controller {
         message: `Product with id ${id} has been updated`,
       });
     } catch (err) {
+      // console.log(err);
       next(err);
     }
   }

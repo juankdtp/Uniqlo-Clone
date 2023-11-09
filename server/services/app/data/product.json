@@ -5,7 +5,7 @@
     "description": "Jaket Pria dengan desain tudung yang dapat memberi perlindungan lebih terhadap udara dingin sangat cocok untuk digunakan traveling lokasi yang dingin.",
     "price": 299000,
     "categoryId": 2,
-    "authorId": 1
+    "authorId": "654c7c67d9b666809f64b299"
   },
   {
     "name": "Rompi Panjang Ultra Light Down",
@@ -13,7 +13,7 @@
     "description": "Rompi wanita yang stylish dan cukup hangat",
     "price": 149000,
     "categoryId": 1,
-    "authorId": 2
+    "authorId": "654c7c67d9b666809f64b299"
   },
   {
     "name": "GIRLS T-Shirt Katun Tanpa Lengan",
@@ -21,6 +21,6 @@
     "description": "Baju T-Shirt anak terbuat dari katun yang mudah menyerap keringat",
     "price": 99000,
     "categoryId": 3,
-    "authorId": 1
+    "authorId": "654c801baf521e565cc35c29"
   }
 ]

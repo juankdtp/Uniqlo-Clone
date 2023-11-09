@@ -2,21 +2,18 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
-const cors = require("cors");
 const express = require("express");
 const app = express();
-
-const port = process.env.PORT || 4002;
+const cors = require("cors");
 const router = require("./routes/index");
-const errorHandler = require("./middleware/errorHandle");
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(router);
-app.use(errorHandler);
-
+// console.log(process.env.REDIS_PASS);
 app.listen(port, () => {
-  console.log("App using port", port);
+  console.log("orchestrator-express using port", port);
 });
