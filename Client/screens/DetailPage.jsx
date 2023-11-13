@@ -21,7 +21,14 @@ function DetailPage({ route, navigation }) {
             {productData?.name}
           </Text>
           <Text>Product id: {id}</Text>
-          <Text>Author: {productData?.User?.username}</Text>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <Text>Author: {productData?.User?.username}</Text>
+            <Text style={{ paddingRight: 5 }}>
+              Category: {productData?.Category?.name}
+            </Text>
+          </View>
           <View
             style={{ flexDirection: "row", justifyContent: "space-around" }}
           >
