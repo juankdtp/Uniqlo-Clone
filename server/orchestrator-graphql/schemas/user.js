@@ -1,4 +1,4 @@
-const USER_URL = "http://localhost:4001";
+const USER_URL = process.env.USER_URL || "http://localhost:4001";
 const axios = require("axios");
 const redis = require("../helpers/redis");
 
