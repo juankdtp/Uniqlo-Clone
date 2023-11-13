@@ -9,10 +9,15 @@ const {
   resolvers: productResolvers,
 } = require("./schemas/product");
 
+const {
+  typeDefs: userTypeDefs,
+  resolvers: userResolvers,
+} = require("./schemas/user");
+
 (async () => {
   const server = new ApolloServer({
-    typeDefs: [productTypeDefs],
-    resolvers: [productResolvers],
+    typeDefs: [productTypeDefs, userTypeDefs],
+    resolvers: [productResolvers, userResolvers],
     introspection: true,
   });
 

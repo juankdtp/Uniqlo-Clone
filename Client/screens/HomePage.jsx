@@ -1,6 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import LogoHeader from "../components/LogoHeader";
+import { GET_PRODUCTS } from "../config/queries";
+
 function HomeListPage({ navigation }) {
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
   const onPressCard = (id) => {
     navigation.navigate("DetailPage", {
       id,

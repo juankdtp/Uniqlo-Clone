@@ -5,6 +5,8 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { ApolloProvider } from "@apollo/client";
+import client from "./config/apollo";
 
 import PriaListPage from "./screens/PriaListPage";
 import WanitaListPage from "./screens/WanitaListPage";
@@ -17,14 +19,16 @@ const Stack = createNativeStackNavigator();
 
 const List = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="CardList"
-        component={HomeListPage}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="DetailPage" component={DetailPage} />
-    </Stack.Navigator>
+    <ApolloProvider client={client}>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="CardList"
+          component={HomeListPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="DetailPage" component={DetailPage} />
+      </Stack.Navigator>
+    </ApolloProvider>
   );
 };
 
