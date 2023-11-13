@@ -61,8 +61,17 @@ const typeDefs = `#graphql
 const resolvers = {
   Query: {
     getAllUser: async () => {
-      const { data } = await axios.get(`${USER_URL}`);
-      return data.data;
+      const userCache = await redis.get("users");
+      if (userCache) {
+        const data = JSON.parse(userCache);
+        // console.log("redis");
+        return data;
+      } else {
+        const { data } = await axios.get(`${USER_URL}`);
+        await redis.set("users", JSON.stringify(data.data));
+        // console.log("non redis");
+        return data.data;
+      }
     },
 
     getUserById: async (_, { id }) => {
@@ -85,6 +94,7 @@ const resolvers = {
           phoneNumber,
           address,
         });
+        redis.del("users");
         return data;
       } catch (err) {
         console.log(err);
@@ -94,6 +104,7 @@ const resolvers = {
 
     deleteUser: async (_, { id }) => {
       const { data } = await axios.delete(`${USER_URL}/${id}`);
+      redis.del("users");
       return data;
     },
   },

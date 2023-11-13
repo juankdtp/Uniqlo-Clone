@@ -1,6 +1,7 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import LogoHeader from "../components/LogoHeader";
 import { GET_PRODUCTS } from "../config/queries";
+import { useQuery } from "@apollo/client";
 
 function HomeListPage({ navigation }) {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
@@ -10,9 +11,12 @@ function HomeListPage({ navigation }) {
       id,
     });
   };
+
+  // console.log(data);
   return (
     <>
       <LogoHeader />
+      {loading && <Text>Loading...</Text>}
       <View
         style={{
           flexDirection: "row",
@@ -22,136 +26,49 @@ function HomeListPage({ navigation }) {
         }}
       >
         {/* <Text>Ini Page List Home</Text> */}
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            paddingTop: 1,
-            gap: 1,
-          }}
-        >
-          <TouchableOpacity
-            style={{
-              // backgroundColor: "#cacaca",
-              borderRadius: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              // width: 15,
-              // height: 15,
-            }}
-            onPress={() => onPressCard(50)}
-          >
-            <Image
-              source={{
-                uri: "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449725/item/idgoods_69_449725.jpg?width=750",
+        {!loading &&
+          data?.getAllProduct?.map((product) => (
+            // <FlatList key={product?.id}>
+            <View
+              style={{
+                flexDirection: "row",
+                flexWrap: "wrap",
+                paddingTop: 1,
+                gap: 1,
               }}
-              style={{ height: 200, width: 200, resizeMode: "contain" }}
-            ></Image>
-            <View>
-              <Text style={{ color: "#ababab" }}>Pria</Text>
-              <Text style={{ fontWeight: "bold" }}>
-                Jaket Parka Seamless Down
-              </Text>
-              <Text style={{ color: "red", fontWeight: "bold" }}>
-                Rp. 299000
-              </Text>
+              key={product?.id}
+            >
+              <TouchableOpacity
+                style={{
+                  // backgroundColor: "#cacaca",
+                  borderRadius: 8,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  // width: 15,
+                  // height: 15,
+                }}
+                onPress={() => onPressCard(product.id)}
+              >
+                <Image
+                  source={{ uri: product.mainImg }}
+                  style={{ height: 200, width: 200, resizeMode: "contain" }}
+                ></Image>
+                <View>
+                  <Text style={{ color: "#ababab" }}>
+                    {product.Category.name}
+                  </Text>
+                  <Text style={{ fontWeight: "bold", fontSize: 11 }}>
+                    {product.name}
+                  </Text>
+                  <Text style={{ color: "red", fontWeight: "bold" }}>
+                    Rp. {product.price}
+                  </Text>
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-        </View>
+            // </FlatList>
+          ))}
         {/* dkdk */}
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            paddingTop: 1,
-            gap: 1,
-          }}
-        >
-          <View
-            style={{
-              // backgroundColor: "#cacaca",
-              borderRadius: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              // width: 15,
-              // height: 15,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449725/item/idgoods_69_449725.jpg?width=750",
-              }}
-              style={{ height: 200, width: 200, resizeMode: "contain" }}
-            ></Image>
-            <View>
-              <Text>Pria</Text>
-              <Text>Jaket Parka Seamless Down</Text>
-              <Text style={{ color: "red" }}>Rp. 299000</Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            paddingTop: 1,
-            gap: 1,
-          }}
-        >
-          <View
-            style={{
-              // backgroundColor: "#cacaca",
-              borderRadius: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              // width: 15,
-              // height: 15,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449725/item/idgoods_69_449725.jpg?width=750",
-              }}
-              style={{ height: 200, width: 200, resizeMode: "contain" }}
-            ></Image>
-            <View>
-              <Text>Pria</Text>
-              <Text>Jaket Parka Seamless Down</Text>
-              <Text style={{ color: "red" }}>Rp. 299000</Text>
-            </View>
-          </View>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            flexWrap: "wrap",
-            paddingTop: 1,
-            gap: 1,
-          }}
-        >
-          <View
-            style={{
-              // backgroundColor: "#cacaca",
-              borderRadius: 8,
-              justifyContent: "center",
-              alignItems: "center",
-              // width: 15,
-              // height: 15,
-            }}
-          >
-            <Image
-              source={{
-                uri: "https://image.uniqlo.com/UQ/ST3/id/imagesgoods/449725/item/idgoods_69_449725.jpg?width=750",
-              }}
-              style={{ height: 200, width: 200, resizeMode: "contain" }}
-            ></Image>
-            <View>
-              <Text>Pria</Text>
-              <Text>Jaket Parka Seamless Down</Text>
-              <Text style={{ color: "red" }}>Rp. 299000</Text>
-            </View>
-          </View>
-        </View>
       </View>
     </>
   );

@@ -24,7 +24,7 @@ export const GET_PRODUCTS = gql`
 `;
 
 export const GET_PRODUCT_BY_ID = gql`
-  query GetAllProduct($getProductByIdId: Int!) {
+  query ExampleQuery($getProductByIdId: ID!) {
     getProductById(id: $getProductByIdId) {
       id
       name
@@ -50,6 +50,13 @@ export const GET_PRODUCT_BY_ID = gql`
         phoneNumber
         address
         email
+      }
+      Images {
+        id
+        productId
+        imgUrl
+        createdAt
+        updatedAt
       }
     }
   }

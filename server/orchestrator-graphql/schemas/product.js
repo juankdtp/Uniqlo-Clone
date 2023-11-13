@@ -1,5 +1,5 @@
-const APP_URL = "http://localhost:4002";
-const USER_URL = "http://localhost:4001";
+const APP_URL = process.env.APP_URL || "http://localhost:4002";
+const USER_URL = process.env.USER_URL || "http://localhost:4001";
 const axios = require("axios");
 const redis = require("../helpers/redis");
 
@@ -34,8 +34,17 @@ const typeDefs = `#graphql
         authorId: ID
         createdAt: String
         updatedAt: String
+        Images: [Images]
         Category: Category
         User: User
+    }
+
+    type Images{
+      id: ID!
+      productId: ID!
+      imgUrl: String
+      createdAt: String
+      updatedAt: String
     }
 
     type User {
@@ -97,7 +106,7 @@ const typeDefs = `#graphql
 
     type Query{
         getAllProduct: [Product]
-        getProductById(id: Int!): ProductById
+        getProductById(id: ID!): ProductById
         showError: Error
     }
     
@@ -162,6 +171,7 @@ const resolvers = {
         const userByIdData = getUserById.data.data;
         // console.log(userByIdData, 72);
         productByIdData.User = userByIdData;
+        // console.log(productByIdData, 174);
         return productByIdData;
       } catch (err) {
         console.log(err);

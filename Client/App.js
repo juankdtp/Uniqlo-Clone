@@ -39,10 +39,10 @@ export default function App() {
         <NavigationContainer>
           <View style={styles.container}>
             <Tab.Navigator>
+              <Tab.Screen name="Home" component={PriaListPage} />
               <Tab.Screen name="List" component={List} />
-              <Tab.Screen name="Wanita" component={WanitaListPage} />
-              <Tab.Screen name="Pria" component={PriaListPage} />
-              <Tab.Screen name="Anak" component={AnakListPage} />
+              {/* <Tab.Screen name="Wanita" component={WanitaListPage} /> */}
+              {/* <Tab.Screen name="Anak" component={AnakListPage} /> */}
             </Tab.Navigator>
             {/* <Text>Open up App.js to start working on your app! HOLAA</Text> */}
             <StatusBar style="auto" />
