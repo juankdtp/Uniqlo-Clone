@@ -1,0 +1,39 @@
+# services:
+#   service_app:
+#     build: ./services/app
+#     ports:
+#       - "4002:4002"
+#   service_user:
+#     build: ./services/users
+#     ports:
+#       - "4001:4001"
+#   orchestrator:
+#     build: ./orchestrator-graphql
+#     ports:
+#       - "80:4000"
+#     environment:
+#       - APP_URL=http://service_app:4002
+#       - USER_URL=http://service_user:4001
+
+version: "3.1"
+
+services:
+  orchestrator-graphql:
+    build: ./server/orchestrator-graphql
+    environment:
+      REDIS_PASS: ${REDIS_PASS}
+    ports:
+      - "80:4000"
+
+  users:
+    build: ./server/services/users
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - "4001:4001"
+
+  app:
+    build: ./server/services/app
+    ports:
+      - "4002:4002"

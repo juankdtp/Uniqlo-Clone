@@ -1,5 +1,7 @@
-const APP_URL = process.env.APP_URL || "http://localhost:4002";
-const USER_URL = process.env.USER_URL || "http://localhost:4001";
+// const APP_URL = process.env.APP_URL || "http://localhost:4002";
+// const USER_URL = process.env.USER_URL || "http://localhost:4001";
+const APP_URL = process.env.APP_URL || "http://app:4002";
+const USER_URL = process.env.USER_URL || "http://users:4001";
 const axios = require("axios");
 const redis = require("../helpers/redis");
 
