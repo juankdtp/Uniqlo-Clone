@@ -19,21 +19,23 @@ version: "3.1"
 
 services:
   orchestrator-graphql:
-    build: ./server/orchestrator-graphql
+    build: ./orchestrator-graphql
     environment:
       REDIS_PASS: ${REDIS_PASS}
     ports:
       - "80:4000"
 
   users:
-    build: ./server/services/users
+    build: ./services/users
     environment:
       NODE_ENV: ${NODE_ENV}
-      DATABASE_URL: ${DATABASE_URL}
+      # DATABASE_URL: ${DATABASE_URL}
     ports:
       - "4001:4001"
 
   app:
-    build: ./server/services/app
+    build: ./services/app
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
     ports:
       - "4002:4002"
