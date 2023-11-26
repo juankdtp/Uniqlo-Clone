@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=4002
-# ENV DATABASE_URL=postgresql://postgres:1kA4S6PnmJsCrhlS@db.pjqcljinupzhluapwgiz.supabase.co:5432/postgres
+
 
 # COPY package.json package-lock.json /app/
 COPY package.json .
