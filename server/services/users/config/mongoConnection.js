@@ -1,7 +1,6 @@
 const { MongoClient, ObjectId } = require("mongodb");
 
-const uri =
-  "mongodb+srv://juankhosydtps:FLK3arxAewI03D8a@cluster0.wv495lj.mongodb.net/";
+const uri = ""; //MongoDB Url
 
 const client = new MongoClient(uri);
 let database;
